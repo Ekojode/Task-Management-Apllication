@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import './app/data/services/storage/services.dart';
-import './app/modules/home/view.dart';
 
-void main() async {
-  await GetStorage.init();
-  await Get.putAsync(() => StorageService().init());
+import 'package:get/get.dart';
+import './bindings/bindings.dart';
+import './view/home.dart';
+
+void main() {
   runApp(const MyApp());
 }
 
@@ -16,10 +14,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
+      initialBinding: MyBindings(),
       debugShowCheckedModeBanner: false,
       title: 'Get X Tutorial',
-      home: HomeView(),
+      home: const Home(),
     );
   }
 }
