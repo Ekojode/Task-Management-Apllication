@@ -26,36 +26,38 @@ class TodoGrid extends StatelessWidget {
                   DateFormat.yMMMEd().format(contol.todo[i].dueDate!),
                 ),
                 trailing: IconButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (ctx) {
-                          return AlertDialog(
-                            title: const Text("Confirm"),
-                            content: const Text(
-                                "Are you sure you want to delete this todo!"),
-                            actions: [
-                              TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text("Cancel")),
-                              TextButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (ctx) {
+                        return AlertDialog(
+                          title: const Text("Confirm"),
+                          content: const Text(
+                              "Are you sure you want to delete this todo!"),
+                          actions: [
+                            TextButton(
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                child: const Text("Okay",
-                                    style: TextStyle(color: Colors.red)),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    },
-                    icon: const Icon(
-                      Icons.delete,
-                      color: Colors.red,
-                    )),
+                                child: const Text("Cancel")),
+                            TextButton(
+                              onPressed: () {
+                                contol.removeTodo(contol.todo[i]);
+                                Navigator.pop(context);
+                              },
+                              child: const Text("Okay",
+                                  style: TextStyle(color: Colors.red)),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ),
+                ),
               ),
             );
           },

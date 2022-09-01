@@ -22,4 +22,9 @@ class TodoController extends GetxController {
     final newTodo = Todo(id: randomInt(), title: title, dueDate: date);
     _todo.add(newTodo);
   }
+
+  void removeTodo(Todo todo) {
+    // final todoRemoved = _todo.firstWhere((element) => element == todo);
+    _todo.remove(todo);
+  }
 }
