@@ -1,7 +1,10 @@
+import 'package:flutter/material.dart';
+
 class Todo {
   int id;
   String title;
   DateTime? dueDate;
+  TimeOfDay? dueTime;
   bool isCompleted;
   Todo({
     required this.id,
